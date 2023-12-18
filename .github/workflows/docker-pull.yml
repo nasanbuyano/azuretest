@@ -26,6 +26,12 @@ jobs:
           username: azureuser
           key: ${{ secrets.AZURE_VM_SSH_KEY }}
           script: |
-            docker stop my-container || true
-            docker rm my-container || true
+            if [ $(docker ps -q -f name=my-container) ]; then
+              echo "Container my-container exists, stopping and removing it..."
+              docker stop my-container
+              docker rm my-container
+            else
+              echo "Container my-container does not exist, no action needed."
+            fi
+            echo "Running new container..."
             docker run --name my-container -d -p 80:80 nasanbuyan/rms:app
