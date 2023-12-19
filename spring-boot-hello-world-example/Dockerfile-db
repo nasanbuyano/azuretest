@@ -1,0 +1,14 @@
+# Use the official MySQL image as a base
+FROM mysql:5.7
+
+# Add a database initialization script
+COPY ./sql-scripts/ /docker-entrypoint-initdb.d/
+
+# Set environment variables
+ENV MYSQL_DATABASE=rms \
+    MYSQL_ROOT_PASSWORD=toor \
+    MYSQL_USER=user \
+    MYSQL_PASSWORD=password
+
+# Expose the default MySQL port
+EXPOSE 3306
