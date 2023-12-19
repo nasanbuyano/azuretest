@@ -2,7 +2,7 @@
 FROM adoptopenjdk:11-jre-hotspot
 
 # The application's jar file
-ARG JAR_FILE=target/*.jar
+ARG JAR_FILE=./spring-boot-hello-world-example/target/*.jar
 
 # Add the application's jar file to the container
 COPY ${JAR_FILE} app.jar
