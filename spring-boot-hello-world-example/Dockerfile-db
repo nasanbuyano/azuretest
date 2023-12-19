@@ -2,7 +2,7 @@
 FROM mysql:5.7
 
 # Add a database initialization script
-COPY ./sql-scripts/ /docker-entrypoint-initdb.d/
+# COPY ./sql-scripts/ /docker-entrypoint-initdb.d/
 
 # Set environment variables
 ENV MYSQL_DATABASE=rms \
